@@ -13,7 +13,7 @@ app.get('/health', (req, res) => {
 
 // a dummy endpoint in the app that makes it possible to do some code changes and to ensure that the deployed version has really changed
 app.get('/version', (req, res) => {
-  res.send('1') // change this string to ensure a new version deployed
+  res.send('2') // change this string to ensure a new version deployed
 })
 
 app.listen(PORT, () => {

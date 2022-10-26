@@ -35,3 +35,5 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           healthcheck: 'https://pokemon-pokedex-cards.herokuapp.com/health'
           checkstring: 'ok'
+          delay: 5
+          rollbackonhealthcheckfailed: 'true'

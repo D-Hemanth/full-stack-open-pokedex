@@ -8,7 +8,7 @@ app.use(express.static('dist'))
 
 // a simple endpoint for doing an application health check to the backend
 app.get('/health', (req, res) => {
-  res.send('not-ok')
+  res.send('ok')
 })
 
 // a dummy endpoint in the app that makes it possible to do some code changes and to ensure that the deployed version has really changed

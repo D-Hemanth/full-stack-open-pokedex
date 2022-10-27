@@ -31,16 +31,16 @@ jobs:
           start: npm run start-prod
           wait-on: 'http://localhost:5000'
       - name: notify if build failed
-          uses: rjstone/discord-webhook-notify@v1.0.4
-          if: ${{ failure() }}
-          with:
-            severity: error
-            username: GitHub
-            color: '#cc0202'
-            text: 'Build failed'
-            description: commit ${{github.event.head_commit.url}} by ${{github.event.head_commit.committer.username}} broke the build :(
-            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-            avatarUrl: https://avatars.githubusercontent.com/${{github.event.head_commit.committer.username}}
+        uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
+        if: ${{ failure() }}
+        with:
+          severity: error
+          username: GitHub
+          color: '#cc0202'
+          text: 'Build failed'
+          description: commit ${{github.event.head_commit.url}} by ${{github.event.head_commit.committer.username}} broke the build :(
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          avatarUrl: https://avatars.githubusercontent.com/${{github.event.head_commit.committer.username}}
       - name: deploy
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
@@ -53,16 +53,16 @@ jobs:
           delay: 5
           rollbackonhealthcheckfailed: 'true'
       - name: notify if deployment succeeded
-          uses: rjstone/discord-webhook-notify@v1.0.4
-          if: ${{ success() }}
-          with:
-            severity: info
-            username: GitHub
-            color: '#00ff00'
-            text: 'A new version of Pokedex deployed'
-            description: to https://pokemon-pokedex-cards.herokuapp.com/ by ${{github.event.head_commit.committer.username}}
-            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-            avatarUrl: https://avatars.githubusercontent.com/${{github.event.head_commit.committer.username}}
+        uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
+        if: ${{ success() }}
+        with:
+          severity: info
+          username: GitHub
+          color: '#00ff00'
+          text: 'A new version of Pokedex deployed'
+          description: to https://pokemon-pokedex-cards.herokuapp.com/ by ${{github.event.head_commit.committer.username}}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          avatarUrl: https://avatars.githubusercontent.com/${{github.event.head_commit.committer.username}}
   tag_release:
     needs: [simple_deployment_pipeline] # jobs of a workflow are executed in parallel but since we want the linting, testing and deployment to be done first, we set a dependency using 'needs' keyword so that the tag_release waits the another job to execute first
     runs-on: ubuntu-20.04

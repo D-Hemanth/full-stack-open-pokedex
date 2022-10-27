@@ -31,7 +31,7 @@ jobs:
           start: npm run start-prod
           wait-on: 'http://localhost:5000'
       - name: notify if build failed
-          uses: rjstone/discord-webhook-notify@v1
+          uses: rjstone/discord-webhook-notify@v1.0.4
           if: ${{ failure() }}
           with:
             severity: error
@@ -53,7 +53,7 @@ jobs:
           delay: 5
           rollbackonhealthcheckfailed: 'true'
       - name: notify if deployment succeeded
-          uses: rjstone/discord-webhook-notify@v1
+          uses: rjstone/discord-webhook-notify@v1.0.4
           if: ${{ success() }}
           with:
             severity: info

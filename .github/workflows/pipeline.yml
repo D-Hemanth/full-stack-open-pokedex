@@ -40,7 +40,7 @@ jobs:
           text: 'Build failed'
           description: commit ${{github.event.head_commit.url}} by ${{github.event.head_commit.committer.username}} broke the build :(
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          avatarUrl: 'https://avatars.githubusercontent.com/${{github.event.head_commit.committer.username}}'
+          avatarUrl: https://avatars.githubusercontent.com/${{github.event.head_commit.committer.username}}
       - name: deploy
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
@@ -62,7 +62,7 @@ jobs:
           text: 'A new version of Pokedex deployed'
           description: to 'https://pokemon-pokedex-cards.herokuapp.com/' by ${{github.event.head_commit.committer.username}}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          avatarUrl: 'https://avatars.githubusercontent.com/${{github.event.head_commit.committer.username}}'
+          avatarUrl: https://avatars.githubusercontent.com/${{github.event.head_commit.committer.username}}
   tag_release:
     needs: [simple_deployment_pipeline] # jobs of a workflow are executed in parallel but since we want the linting, testing and deployment to be done first, we set a dependency using 'needs' keyword so that the tag_release waits the another job to execute first
     runs-on: ubuntu-20.04

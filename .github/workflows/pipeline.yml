@@ -21,14 +21,14 @@ jobs:
       - name: lint
         run: npm run eslint
       - name: build
-        run: npm
+        run: npm run build
       - name: test
         run: npm run test
       - name: e2e tests
         uses: cypress-io/github-action@v4
         with:
-          build: npm
-          start: npm
+          build: npm run build
+          start: npm run start-prod
           wait-on: 'http://localhost:5000'
       - name: notify if build failed
         uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112

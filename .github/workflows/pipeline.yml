@@ -41,3 +41,13 @@ jobs:
           checkstring: 'ok'
           delay: 5
           rollbackonhealthcheckfailed: 'true'
+  tag_release:
+    needs: [simple_deployment_pipeline] # jobs of a workflow are executed in parallel but since we want the linting, testing and deployment to be done first, we set a dependency using 'needs' keyword so that the tag_release waits the another job to execute first
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Bump patch version and push tag
+        if: ${{ github.event_name == 'push' }}
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch # from the documentation by default your releases will receive a minor bump,Modify the configuration above so that each new version is by default a patch bump

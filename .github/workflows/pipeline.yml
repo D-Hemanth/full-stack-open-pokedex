@@ -47,7 +47,7 @@ jobs:
     steps:
       - name: Bump patch version and push tag
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
-        uses: anothrNick/github-tag-action@1.36.0
+        uses: anothrNick/github-tag-action@eca2b69f9e2c24be7decccd0f15fdb1ea5906598 #When using a third party action it is a good idea to specify the used version with hash instead of using a version number which is implemented using git tag and in principle can be moved
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch # from the documentation by default your releases will receive a minor bump,Modify the configuration above so that each new version is by default a patch bump

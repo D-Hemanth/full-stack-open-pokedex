@@ -60,7 +60,7 @@ jobs:
           username: GitHub
           color: '#00ff00'
           text: 'A new version of Pokedex deployed'
-          description: to 'https://pokemon-pokedex-cards.herokuapp.com/' by ${{github.event.head_commit.committer.username}}
+          description: to https://pokemon-pokedex-cards.herokuapp.com/ by ${{github.event.head_commit.committer.username}}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           avatarUrl: https://avatars.githubusercontent.com/${{github.event.head_commit.committer.username}}
   tag_release:

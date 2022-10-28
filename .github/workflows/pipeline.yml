@@ -12,7 +12,7 @@ jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3 # this action gets a copy of our repository to run actions on
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
@@ -31,12 +31,12 @@ jobs:
           start: npm run start-prod
           wait-on: 'http://localhost:5000'
       - name: notify if build failed
-        uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
+        uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112 # for third party actions its better to use hash version than git version number
         if: ${{ failure() }}
         with:
           severity: error
           username: GitHub
-          color: '#cc0202'
+          color: '#cc0202' # red color for error
           text: 'Build failed'
           description: commit ${{github.event.head_commit.url}} by ${{github.event.head_commit.committer.username}} broke the build :(
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
@@ -53,12 +53,12 @@ jobs:
           delay: 5
           rollbackonhealthcheckfailed: 'true'
       - name: notify if deployment succeeded
-        uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
+        uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112 # for third party actions its better to use hash version than git version number
         if: ${{ success() }}
         with:
           severity: info
           username: GitHub
-          color: '#00ff00'
+          color: '#00ff00' # green color for success
           text: 'A new version of Pokedex deployed'
           description: to https://pokemon-pokedex-cards.herokuapp.com/ by ${{github.event.head_commit.committer.username}}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}

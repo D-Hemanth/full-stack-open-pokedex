@@ -1,9 +1,13 @@
 name: Periodic Healthcheck pipeline
 
 on:
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
+  # schedule event allows you to trigger a workflow at a scheduled time
+  schedule:
+    # * is a special character in YAML, '* * * * *' => minute (0 - 59) │ hour (0 - 23) │ day of the month (1 - 31) │ month (1 - 12 or JAN-DEC) │ day of the week (0 - 6 or SUN-SAT)
+    - cron: '0 0 * * *'
 
 jobs:
   healthcheck_pipeline:

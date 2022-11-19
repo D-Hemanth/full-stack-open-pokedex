@@ -2,7 +2,11 @@
 
 This repository is used for the CI/CD module of the Full stack open course
 
-Fork the repository to complete course exercises
+## Live Demo: https://pokemon-pokedex-cards.herokuapp.com/
+
+## Pokemon Pokedex:
+
+![](./pokedex-quality-50.gif)
 
 ## Commands
 
@@ -13,9 +17,3 @@ Start by running `npm install` inside the project folder
 `npm run eslint` to run eslint
 `npm run build` to make a production build
 `npm run start-prod` to run your production build
-
-## Live Demo: https://pokemon-pokedex-cards.herokuapp.com/
-
-## Pokemon Pokedex:
-
-![](./pokedex-quality-50.gif)

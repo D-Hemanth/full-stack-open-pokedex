@@ -2,7 +2,7 @@
 
 This repository is used for the CI/CD module of the Full stack open course
 
-## Live Demo: https://pokemon-pokedex-cards.herokuapp.com/
+## Live Demo: https://pokemon-pokedex-three.vercel.app/
 
 ## Pokemon Pokedex:
 

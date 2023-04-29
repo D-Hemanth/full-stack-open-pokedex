@@ -1,6 +1,6 @@
 # Full Stack open CI/CD
 
-This repository is used for the CI/CD module of the Full stack open course
+An application used to demonstrate a simple CI/CD deployment pipeline using workflows in Github Actions.
 
 ## Live Demo: https://pokemon-pokedex-three.vercel.app/
 
